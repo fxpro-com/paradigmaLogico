@@ -3,4 +3,5 @@ Paradigma Lógico
 
 Autores:
 Cleiton Gomes; Vanessa Barbosa
+
 ===============
