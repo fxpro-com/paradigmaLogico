@@ -36,7 +36,7 @@ grava(X,Y,Z):-
 
 
 
-%:- dynamic initialization(iniciar).
+%:- initialization(iniciar).
 %iniciar:- [correlacao.txt].
 
 %see abre o arquivo para leitura
