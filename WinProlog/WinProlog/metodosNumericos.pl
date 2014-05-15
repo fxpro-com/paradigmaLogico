@@ -11,8 +11,6 @@ metodosNumericos(0.85,0.38,vaiCair).
 metodosNumericos(0.85,0.50,vaiCair).
 metodosNumericos(0.85,0.62,vaiCair).
 
-%see(correlacao).
-
 %Regras
 
 %Tabela virtual: definir uma tabela sem ter que criá-la
@@ -35,3 +33,13 @@ deleta1(X). %garante que seja bem sucedido
 
 grava(X,Y,Z):-
 	assert(metodosNumericos(X,Y,Z)).
+
+
+
+%:- dynamic initialization(iniciar).
+%iniciar:- [correlacao.txt].
+
+%see abre o arquivo para leitura
+see('correlacao'), read(X).
+%seen fecha o arquivo
+%seen.
