@@ -1,0 +1,134 @@
+Frequently Asked Questions (FAQ) - LPA 27 JAN 97
+================================================
+
+How can I get the Windows screen resolution from within Prolog?
+---------------------------------------------------------------
+There is no built-in way of accessing the Windows screen resolution
+directly from Prolog, but the following program uses winapi/3 to access
+a Windows API function to return these values:	
+
+dlg_screen_size( Xpix, Ypix ) :-
+	   winapi( (user32,'GetSystemMetrics'), [0], Xsize ),
+	   winapi( (user32,'GetSystemMetrics'), [1], Ysize ),
+	   Xpix = Xsize,
+	   Ypix = Ysize.
+
+How do I avoid network errors when saving settings in PRO386W.INI?
+------------------------------------------------------------------
+To allow LPA Prolog for Windows to work correctly in this situation you
+should set the /N command line switch to specify the correct location
+for the initialisation files given your network setup. The /N command
+line switch takes the following values:	
+
+	Switch	Location
+	------	--------
+	/N0	Use Prolog directory (default)
+	/N1	Use Windows directory (usual setting for networks)
+	/N2	Use Current directory
+	/N3	Do not save .INI file
+
+For example, you can set Prolog to use the Windows directory as the
+location for the initialisation file by entering the following at the
+DOS prompt:
+
+	C> WIN PRO386W /N1
+
+You can also configure the initialisation file by setting the /N command
+line switch on the command line property of Prolog's program item.
+
+Why do I get "Error 21" when using the not/1 predicate?
+-------------------------------------------------------
+You should use the \+/1 predicate (negation as failure) instead of
+not/1. This is because not/1 is an attempt to implement truly "logical"
+negation where any variables in the call being negated that become bound
+during the process of negation cause error 21.
+
+How do I get an edit control in a dialog to accept carriage returns?
+--------------------------------------------------------------------
+Normally, dialogs process the <enter> key directly, taking it to mean
+"push the default button". If you want this key to act as a "carriage
+return" key, you should create your edit control with the es_wantreturn
+style. Even if you don't use this style, Windows provides the <ctrl-J>
+keystroke as an alternative way to insert a new line.
+
+How can I handle the menus that I have installed on the menu bar?
+-----------------------------------------------------------------
+Menu messages are now sent to the window that is in focus when the menu
+item is selected.
+
+To handle menu messages you need to attach a handler to that window that
+includes a case for the msg_menu message. For example the following code
+creates and adds a menu to the menu bar, then attaches a handler to the
+console window that handles the msg_menu message for both menu IDs and
+passes all other messages on to the default window_handler/4. After
+running the make_menu/0 goal, selecting items from the mymenu menu will
+invoke the my_window_handler/4 handler whenever the console window is in
+focus.
+
+	make_menu :-
+	   wmcreate( mymenu ),
+	   wmnuadd( mymenu, -1, `Item &1`, 1000 ),
+ 	   wmnuadd( mymenu, -1, `Item &2`, 1001 ),
+	   wmnuadd( 0, 2, `&Mymenu`, mymenu ),
+	   window_handler( 1, my_window_handler ).
+
+	my_window_handler( W, msg_menu, 1000, R ):-
+	   write( 'I am handling menu id 1000' ),
+	   nl.
+	my_window_handler( W, msg_menu, 1001, R ):-
+	   write( 'I am handling menu id 1001' ),
+	   nl.
+	my_window_handler( W, M, D, R ) :-
+	   window_handler( W, M, D, R ).
+
+What should I do if I get an Internal Error when starting up Prolog?
+--------------------------------------------------------------------
+Sometimes one of the WIN-PROLOG files can be corrupted by external
+programs, resulting in a message during startup such as:
+
+	Error 42, Syntax Error
+	Internal Error 00005EF2: Exit From Prolog [Y/N]?
+
+If you get a message like this, find out:
+
+	Are you running a memory resident virus shield? If so you should
+	make sure that you do not permit the virus shield to append
+	checksum data to Prolog program files, as this can violate the
+	syntax of WIN-PROLOG's overlay file.
+
+If not please contact LPA and let us know the exact details of your
+problem.
+
+What should I do if I get a message that my evaluation has expired?
+-------------------------------------------------------------------
+If you have an evaluation copy of the Prolog you should contact LPA
+directly to either arrange a new evaluation period or send back the 
+copy of Prolog.
+
+If you do not have an evaluation copy you should check the following:
+
+	Have you created, and are trying to run, a stand-alone
+	application?
+
+	Please make sure that you are running the '.OVL' file with
+	exactly the same '.EXE' and '.EXP' files that were used when the
+	'.OVL' file was created.
+
+	Have you installed the WIN-PROLOG application correctly?
+
+	Please make sure that you use the install program provided on the
+	WIN-PROLOG master disk.
+
+If none of the above explanations apply please contact LPA and let us
+know the details of your problem.
+
+How do I use my 3D - look dialogs in a stand alone application?
+---------------------------------------------------------------
+The 3D-look dialogs are on as default in the development environment.
+This is not the case in stand-alone applications. To turn on the use of
+3D-look dialogs in stand-alone applications you should include the
+following Prolog goal in your startup program:
+
+	ctl3d(1)
+
+(this should be called prior to the creation of any windows or dialogs).

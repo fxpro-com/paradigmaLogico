@@ -1,0 +1,224 @@
+WIN-PROLOG Version 3.500 - 16 Apr 96
+====================================
+
+Welcome to version 3.500 of WIN-PROLOG!
+
+WIN-PROLOG 3.500 uses the Win32 API, which is the native interface to
+WinNT and Win95; all previous versions of WIN-PROLOG have run a 32-bit
+kernel on top of the Win16 API (native to Win3.1). Certain changes have
+been forced on LPA by the switch of interface, but as far as possible,
+Prolog-level compatibility has been maintained with previous releases.
+
+Earlier, Win16 version of WIN-PROLOG consisted of two main "system"
+files, PRO386W.EXE which was the Win16 executable and "thunking" layer,
+and PRO386W.EXP which was the true 32-bit Prolog kernel. In version
+3.500 onwards, PRO386W.EXE contains the 32-bit Prolog kernel, and
+because it makes Win32 system calls, there is no need for a thunking
+layer. An additional file, PRO386W.DLL, supplies three "disposable"
+functions: the sttbox/2, abtbox/3 and fonts/1 predicates need this
+additional support, but if the DLL is absent, WIN-PROLOG (and any
+applications built in it) will still function perfectly well, albeit
+with simplified behaviour for these three predicates.
+
+The result is that applications shipped with the Win32 version of WIN-
+PROLOG can contain one less file than their Win16 counterparts,
+requiring considerably less disk space. The minimum application now
+comprises just two files:
+
+        <app>.EXE               ; renamed copy of PRO386W.EXE
+        <app>.OVL               ; user-created overlay file
+
+To run this system on Windows 3.1n you will also need the Micrososft
+Win32s system to support the 32-bit function calls that WIN-PROLOG now
+uses. This is freely distributable, but fills around 4 floppy disks. It
+is widely available from such "free" sources as magazine cover CDs,
+Internet trial CDs, and so forth. If all else fails, download it from
+one of the Microsoft FTP sites!
+
+Help File
+---------
+Please check the help file provided with the system, especially the
+section entitled "What's New". This section tells you about the
+predicates that have been introduced, the predicates that have been
+deleted and the predicates whose functionality has changed.
+
+Graphics
+--------
+The old graphics predicates have been emulated in a library file called
+W_GRAFIX.PL. This library file should allow programs designed to run in 
+WIN-PROLOG 3.3 to run without change in the WIN-PROLOG 3.5 .
+
+To ensure that the any graphics programs run correctly you should load the
+library file by hand, as in the following goal:
+
+        ?- ensure_loaded( library( w_grafix ) ).
+
+PLEASE NOTE If you use the predicates wgfxorg/3 and wgfxmap/5, to change the
+origin and mapping of any grafix window in your application, you should
+ensure, that when creating *any* of the grafix windows in your application,
+you reset the mapping and origin of the window to their intended default
+values. This can be done using calls similar to the following:
+
+        wcreate((mywin,900),grafix,...
+        wgfxorg((mywin,900),0,0),
+        wgfxmap((mywin,900),1,1,1,1),
+
+Scrolling Windows
+-----------------
+Although the predicates wrange/4 and wthumb/3 can now use signed 32-bit
+integers to define the range of a scroll bar, the messages recieved from
+the scroll bar are limited to signed 16-bit integers.
+
+The recommendation is to use wrange/4 to set signed 16-bit values only,
+which limits scroll bars to values between -32768 and +32767.
+
+
+Documentation
+========================================================================
+The documentation provided with WIN-PROLOG consists of:
+
+User Guide                      Describes the process of installing
+                                WIN-PROLOG and its various toolkits.
+                                Also described are:
+
+                                The environment menu options.
+                                Creating stand-alone applications.
+                                The Flex Toolkit.
+                                The Prolog++ Toolkit.
+
+Update Notes                    Highlights what's new in WIN-PROLOG and 
+                                Gives a history of what has changed since
+                                WIN-PROLOG Version 2.6.
+
+Technical Reference             Describes the predicates in LPA-PROLOG.
+
+Programming Guide               Describes the general programming
+                                aspects of LPA-PROLOG.
+
+LPA-PROLOG for Windows          Describes the Windows specific
+      Programming Guide         programming aspects of WIN-PROLOG.
+
+Interfaces and Plug-ins         Describes the Intelligence Server external 
+                                language interfaces and the various plug-ins 
+                                that may be installed with your WIN-PROLOG 
+                                system, including:
+
+                                The DDE interface.
+                                The Dialog Editor.
+                                The Call Graph.
+                                The Cross-Referencer.
+
+Additional Utility Programs
+========================================================================
+
+File Compression
+----------------
+A powerful LZSS compression algorithm is built into LPA-PROLOG, and is
+used in the stuff/3 and fluff/3 predicates. The LZSS algorithm has also
+been incorporated into four stand-alone programs which can be executed
+directly from the DOS command line. These are:
+
+STF386.COM
+----------
+Stuffs (compresses) a single named input file into a single named output
+file, using a default of 11/5 bit LZSS which is configurable on the
+command line. Usage is:
+
+        STF386 [/n] input output
+
+where:
+
+        n       is a single digit in the range 0-3 (see stuff/3)
+        input   is a single (raw) input file name
+        output  is a single (compressed) output file name
+
+Files stuffed with either STF386.COM or the stuff/3 predicate can be
+fluffed with either FLF386.COM or the fluff/3 predicate.
+
+FLF386.COM
+----------
+Fluffs (decompresses) a single named input file into a single named
+output file, using whichever type of LZSS compression was used to stuff
+the file (see above). Usage is:
+
+        FLF386 input output
+
+where:
+
+        input   is a single (compressed) input file name
+        output  is a single (raw) output file name
+
+Files stuffed with either STF386.COM or the stuff/3 predicate can be
+fluffed with either FLF386.COM or the fluff/3 predicate.
+
+STS386.COM
+----------
+Stuffs (compresses) all files matching a given file pattern into a
+single named output archive, using a default of 11/5 bit LZSS which is
+configurable on the command line. Usage is:
+
+        STS386 [/n] pattern archive
+
+where:
+
+        n       is a single digit in the range 0-3 (see stuff/3)
+        pattern is any DOS file specification, including wildcards
+        archive is a single (compressed) archive file name
+
+Files stuffed into an archive with STS386.COM can be retreived and
+fluffed with FLS386.COM, but not directly with the fluff/3 predicate.
+
+FLS386.COM
+----------
+Fluffs (decompresses) all files stored in the single named input
+archive, using whichever type of LZSS compression was used to stuff the
+file (see above). Usage is:
+
+        FLS386 archive
+
+where:
+
+        archive is a single (compressed) archive file name
+
+Files stuffed into an archive with STS386.COM can be retreived and
+fluffed with FLS386.COM, but not directly with the fluff/3 predicate.
+
+
+
+Bugs, Problems and Errors
+-------------------------
+----- Start of List -----
+
+1.
+Under Windows 3.1, windows with a high value ID can be created but when
+messages are sent by those windows they return a negative value as the 
+windows origin ID.
+
+2.
+The "Run/Spypoints" menu option does not work correctly with predicates that
+have functor names that need quoting. To set a spypoint on such a predicate
+you need to use the spy/1 predicate.
+
+3.
+Under Windows 3.1, which uses Win32s, the amount of space available to edit
+controls globally is restricted to around 30k. As such, this system is not
+suited to opening and editing multiple files. WIN-PROLOG is designed to run
+in true Win32 environments, so there should be no problems under Win95 or
+Windows NT.
+
+----- End of List -----
+
+Please report any suspected bugs that do not appear in the above list to
+LPA at:
+
+        LPA, Studio 4, RVPB, Trinity Rd, London, SW18 3SX, England
+        Phone:  0181 871 2016           (+44 181 871 2016)
+        Fax:    0181 874 0449           (+44 181 874 0449)
+        Email:  djw@cix.co.uk           Tech Support Manager
+        Email:  brian@cix.co.uk         Tech Director/Project Manager
+
+Check our Web page for late-breaking information:
+
+        http://www.lpa.co.uk
+
+
