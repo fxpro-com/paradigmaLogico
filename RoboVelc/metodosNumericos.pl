@@ -1,14 +1,5 @@
-:-dynamic metodosNumericos/3.
-
-%Fatos-> Verdades
-metodosNumericos(-0.85,0.23,vaiSubir).
-metodosNumericos(-0.85,0.38,vaiSubir).
-metodosNumericos(-0.85,0.50,vaiSubir).
-metodosNumericos(-0.85,0.62,vaiSubir).
-metodosNumericos(0.85,0.23,vaiCair).
-metodosNumericos(0.85,0.38,vaiCair).
-metodosNumericos(0.85,0.50,vaiCair).
-metodosNumericos(0.85,0.62,vaiCair).
+:-dynamic metodos/3.
+consult(tabelaFatos.pl).
 
 %Regras
 
