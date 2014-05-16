@@ -1,7 +1,4 @@
 :-dynamic metodosNumericos/3.
-%:-dynamic iniciar/0.
-:-dynamic  escritaArquivo/0.
-:-dynamic  leitura/0.
 
 %Fatos-> Verdades
 metodosNumericos(-0.85,0.23,vaiSubir).
