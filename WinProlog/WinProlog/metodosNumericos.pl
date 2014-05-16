@@ -1,5 +1,7 @@
 :-dynamic metodosNumericos/3.
-
+%:-dynamic iniciar/0.
+:-dynamic  escritaArquivo/0.
+:-dynamic  leitura/0.
 
 %Fatos-> Verdades
 metodosNumericos(-0.85,0.23,vaiSubir).
@@ -35,11 +37,18 @@ grava(X,Y,Z):-
 	assert(metodosNumericos(X,Y,Z)).
 
 
-
 %:- initialization(iniciar).
-%iniciar:- [correlacao.txt].
+%iniciar:- [correlacao].
 
+%:- initialization(leitura).
 %see abre o arquivo para leitura
-see('correlacao'), read(X).
-%seen fecha o arquivo
-%seen.
+leitura:-see('correlacao.txt'), read(X),nl, seen.
+
+leitura2:- open('correlacao.txt',read,S), read(S,X),close(S),writeln(X).
+
+
+%tell abre o arquivo para escrita
+escritaArquivo:-tell('correlacao.txt'),
+write('0.92'),nl,
+%told fecha o arquivo
+told.
