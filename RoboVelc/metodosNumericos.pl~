@@ -1,7 +1,4 @@
 :-dynamic metodosNumericos/3.
-%:-dynamic iniciar/0.
-:-dynamic  escritaArquivo/0.
-:-dynamic  leitura/0.
 
 %Fatos-> Verdades
 metodosNumericos(-0.85,0.23,vaiSubir).
@@ -35,10 +32,6 @@ deleta1(X). %garante que seja bem sucedido
 
 grava(X,Y,Z):-
 	assert(metodosNumericos(X,Y,Z)).
-
-
-%:- initialization(iniciar).
-%iniciar:- [correlacao].
 
 %Leitura do arquivo
 leitura:-open('saidaMetodosNumericos.txt',read,Str),read(Str,Line1),close(Str),write(Line1),nl.

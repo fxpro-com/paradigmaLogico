@@ -33,10 +33,6 @@ deleta1(X). %garante que seja bem sucedido
 grava(X,Y,Z):-
 	assert(metodosNumericos(X,Y,Z)).
 
-
-%:- initialization(iniciar).
-%iniciar:- [correlacao].
-
 %Leitura do arquivo
 leitura:-open('saidaMetodosNumericos.txt',read,Str),read(Str,Line1),close(Str),write(Line1),nl.
 
