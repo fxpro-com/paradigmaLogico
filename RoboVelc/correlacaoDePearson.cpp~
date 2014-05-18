@@ -44,9 +44,9 @@ double metodoCorrelacao(int tempoCorrelacao){
 
 	if( (strcmp(nomeTipoGrafico,"M1")) == 0)
 		arquivo = fopen("tabela1Minuto.csv","rt"); 
-	else if( (strcmp(nomeTipoGrafico,"M5")) == 0)
+	else if((strcmp(nomeTipoGrafico,"M5")) == 0)
 		arquivo = fopen("tabela5Minutos.csv","rt");
-	else if( (strcmp(nomeTipoGrafico,"H1")) == 0)
+	else if((strcmp(nomeTipoGrafico,"H1" == 0)))
 		arquivo = fopen("tabela1Hora.csv","rt");
 	else
 		printf("Erro, tabela nao encontrada\n");

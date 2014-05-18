@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <math.h>
 #define QUANTIDADE_CANDLES 100
 #define TAMANHO_STRING 50
 
 double leituraCotacoes[QUANTIDADE_CANDLES];
-char nomeRobo[50],nomeTipoGrafico[2];
+char nomeRobo[TAMANHO_STRING],nomeTipoGrafico[TAMANHO_STRING];
 
 double metodoCorrelacao(int tempoCorrelacao);
 void detectaRoboETipoDeGrafico();
@@ -42,14 +41,7 @@ double metodoCorrelacao(int tempoCorrelacao){
 
 	detectaRoboETipoDeGrafico();
 
-	if( (strcmp(nomeTipoGrafico,"M1")) == 0)
-		arquivo = fopen("tabela1Minuto.csv","rt"); 
-	else if( (strcmp(nomeTipoGrafico,"M5")) == 0)
-		arquivo = fopen("tabela5Minutos.csv","rt");
-	else if( (strcmp(nomeTipoGrafico,"H1")) == 0)
-		arquivo = fopen("tabela1Hora.csv","rt");
-	else
-		printf("Erro, tabela nao encontrada\n");
+	arquivo = fopen(nomeTipoGrafico,"rt");
 
 	for(int c=0; c<QUANTIDADE_CANDLES; c++){
 	    fscanf(arquivo, "%lf",&leituraCotacoes[c]);
@@ -58,6 +50,8 @@ double metodoCorrelacao(int tempoCorrelacao){
 	for(int c=0; c<tempoCorrelacao; c++){
 	    numeroAbcissa = leituraCotacoes[c];
 	    numeroOrdenada = leituraCotacoes[c+1];
+	    printf("%lf c \n",leituraCotacoes[c]);
+	    printf("%lf c+1 \n",leituraCotacoes[c+1]);
 
 	    somaAbcissas =   somaAbcissas + numeroAbcissa;
 	    somaAbcissasQuadrado += (numeroAbcissa*numeroAbcissa);
@@ -83,8 +77,8 @@ double metodoCorrelacao(int tempoCorrelacao){
 void detectaRoboETipoDeGrafico(){
 	FILE *arquivo;
 
-	arquivo = fopen("criterioEntrada.txt","rt");
-	fgets(nomeRobo, 50,arquivo);
-	fgets(nomeTipoGrafico, 3,arquivo);
+	arquivo = fopen("criterioDeEntrada.txt","rt");
+	fscanf(arquivo, "%s",&nomeRobo);
+	fscanf(arquivo, "%s",&nomeTipoGrafico);
 	fclose(arquivo);
 }
