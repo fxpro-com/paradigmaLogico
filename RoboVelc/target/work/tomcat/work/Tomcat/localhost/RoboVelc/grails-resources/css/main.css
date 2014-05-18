@@ -65,7 +65,7 @@ body {
 }
 
 a:link, a:visited, a:hover {
-	color: #48802c;
+	color: #9e0000;
 }
 
 a:hover, a:active {
@@ -225,7 +225,7 @@ fieldset,
 
 .fieldcontain label,
 .fieldcontain .property-label {
-	color: #666666;
+	color: #ce9302;
 	text-align: right;
 	width: 25%;
 }
@@ -247,7 +247,7 @@ label {
 
 input, select, textarea {
 	background-color: #fcfcfc;
-	border: 1px solid #cccccc;
+	border: 1px solid #ce9302;
 	font-size: 1em;
 	padding: 0.2em 0.4em;
 }
@@ -283,7 +283,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .required-indicator {
-	color: #48802C;
+	color: #9e0000;
 	display: inline-block;
 	font-weight: bold;
 	margin-left: 0.3em;
@@ -336,8 +336,8 @@ fieldset.embedded legend {
 
 .message {
 	background: #f3f3ff;
-	border: 1px solid #b2d1ff;
-	color: #006dba;
+	border: 1px solid #d57a7a;
+	color: #9e0000;
 	   -moz-box-shadow: 0 0 0.25em #b2d1ff;
 	-webkit-box-shadow: 0 0 0.25em #b2d1ff;
 	        box-shadow: 0 0 0.25em #b2d1ff;
@@ -399,7 +399,7 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 /* TABLES */
 
 table {
-	border-top: 1px solid #DFDFDF;
+	border-top: 1px solid #ce9302;
 	border-collapse: collapse;
 	width: 100%;
 	margin-bottom: 1em;
@@ -476,7 +476,7 @@ th.desc a {
 }
 
 th:hover, tr:hover {
-	background: #E1F2B6;
+	background: #d57a7a;
 }
 
 /* PAGINATION */
