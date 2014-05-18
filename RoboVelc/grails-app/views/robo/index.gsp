@@ -26,8 +26,7 @@
 					
 						<g:sortableColumn property="nomeRobo" title="${message(code: 'robo.nomeRobo.label', default: 'Nome Robo')}" />
 					
-						<g:sortableColumn property="tipoGrafico" title="${message(code: 'robo.tipoGrafico.label', default: 'Tipo Grafico')}" />
-					
+						<g:sortableColumn property="tipoGrafico" title="${message(code: 'robo.tipoGrafico.label', default: 'Tipo Grafico')}" />			
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +36,7 @@
 						<td><g:link action="show" id="${roboInstance.id}">${fieldValue(bean: roboInstance, field: "nomeRobo")}</g:link></td>
 					
 						<td>${fieldValue(bean: roboInstance, field: "tipoGrafico")}</td>
+					
 					</tr>
 				</g:each>
 				</tbody>

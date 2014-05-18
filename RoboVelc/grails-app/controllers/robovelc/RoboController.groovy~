@@ -114,8 +114,6 @@ class RoboController {
         gravaArquivo.append("\n")
 
         print roboInstance.getNomeRobo()
-	limpaArquivo.close
-	gravaArquivo.close
     }
 
     @Transactional
