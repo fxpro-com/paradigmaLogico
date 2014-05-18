@@ -1,21 +1,24 @@
-
-%Manipula��o dos dados
-%remove uma tupla
-
-deleta(X):-
-	deleta1(X), fail.
-deleta(X). %garante que seja bem sucedido
-
-deleta1(X):-
-	retract(X).
-deleta1(X). %garante que seja bem sucedido
+:-include('tabelaFatos.pl').
+%pearson(21,0.8).
 
 
-%grava(X):-
-	%esquece(X), assert(X).
+inserirFatoPearson(Candles,Pearson):-append('tabelaFatos.pl'),
+	write('pearson('), write(Candles),write(','),write(Pearson), write(').'),nl,told.
+inserirFatoPearson(Candles,Pearson).
 
-grava(X,Y,Z):-
-	assert(metodosNumericos(X,Y,Z)).
+reconstroiTabelaFatos():- reconstroiTabelaFatosAuxiliar(), close(Arquivo).
+reconstroiTabelaFatos().
+
+reconstroiTabelaFatosAuxiliar():- open('tabelaFatos.pl',read,Arquivo),
+	read(Arquivo,Linha),
+	write(Linha),fail.
+reconstroiTabelaFatosAuxiliar().
 
 
-%Atividade: inserir e excluir dados da tabela de fatos
+%deleta(X):-
+	%deleta1(X), fail.
+%deleta(X).
+
+%deleta1(X):-
+	%retract(X).
+%deleta1(X).

@@ -1,5 +1,5 @@
 
-:-dynamic pearson/2.
+:-dynamic pearson/2,
 
 pearson(21,0.74882).
 pearson(34,0.771335).
