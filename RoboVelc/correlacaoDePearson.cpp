@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#define QUANTIDADE_CANDLES 100
 
-double leituraCotacoes[100];
+double leituraCotacoes[QUANTIDADE_CANDLES];
 double metodoCorrelacao(int tempoCorrelacao);
 
 int main(){
@@ -10,7 +11,7 @@ int main(){
 	double tempoCorrelacao = 21;
 	char pontoProlog = '.';
 
-	arquivo = fopen("saidaMetodosProlog.txt","wt");
+	arquivo = fopen("calculoPearsonEmC.txt","wt");
 
 	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 34;
@@ -36,7 +37,7 @@ double metodoCorrelacao(int tempoCorrelacao){
 
  	arquivo = fopen("tabela1Hora.csv","rt");
 
-	for(int c=0; c<100; c++){
+	for(int c=0; c<QUANTIDADE_CANDLES; c++){
 	    fscanf(arquivo, "%lf",&leituraCotacoes[c]);
 	}
 

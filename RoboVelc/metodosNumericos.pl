@@ -6,6 +6,28 @@
 %Tabela virtual: definir uma tabela sem ter que cri�-la
 criterioDeEntrada(X,Y,Z):-metodosNumericos(X,_,Z).
 
+consult(leituraEscritaArquivo.pl).
+
+teste:- write(Correlacao21Candles).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %Manipula��o dos dados
 %remove uma tupla
 deleta(X):-
@@ -24,5 +46,5 @@ deleta1(X). %garante que seja bem sucedido
 grava(X,Y,Z):-
 	assert(metodosNumericos(X,Y,Z)).
 
-consult(leituraEscritaArquivo.pl).
+
 

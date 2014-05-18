@@ -1,12 +1,12 @@
 :-dynamic metodos/3.
-consult(tabelaFatos.pl).
+:-include('tabelaFatos.pl').
 
 %Regras
 
-%Tabela virtual: definir uma tabela sem ter que criá-la
+%Tabela virtual: definir uma tabela sem ter que criï¿½-la
 criterioDeEntrada(X,Y,Z):-metodosNumericos(X,_,Z).
 
-%Manipulação dos dados
+%Manipulaï¿½ï¿½o dos dados
 %remove uma tupla
 deleta(X):-
 	deleta1(X), fail.
@@ -16,7 +16,7 @@ deleta1(X):-
 	retract(X).
 deleta1(X). %garante que seja bem sucedido
 
-%Insere uma tupla, mas primeiro verifica se a tupla não existe através do esquece(X)
+%Insere uma tupla, mas primeiro verifica se a tupla nï¿½o existe atravï¿½s do esquece(X)
 
 %grava(X):-
 	%esquece(X), assert(X).
