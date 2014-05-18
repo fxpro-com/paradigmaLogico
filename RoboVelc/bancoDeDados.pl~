@@ -1,3 +1,4 @@
+%Leitura do arquivo
 carregaBase:-open('calculoPearsonEmC.txt',read,Arquivo),
 	read(Arquivo,Correlacao21Candles),
 	read(Arquivo,Correlacao34Candles),
