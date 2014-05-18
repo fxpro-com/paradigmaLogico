@@ -2,10 +2,14 @@
 :-include('tabelaFatos.pl').
 :-include('controladoraFatos.pl').
 
+%Regras
 
 %Tabela virtual: definir uma tabela sem ter que cri�-la
-%criterioDeEntrada(X,Y,Z):-metodosNumericos(X,_,Z).
+criterioDeEntrada(X,Y,Z):-metodosNumericos(X,_,Z).
 
+consult(leituraEscritaArquivo.pl).
+
+teste:- write(Correlacao21Candles).
 
 
 
