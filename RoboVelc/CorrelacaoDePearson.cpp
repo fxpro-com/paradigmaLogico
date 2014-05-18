@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+double leituraCotacoes[100];
 double metodoCorrelacao(int tempoCorrelacao);
 
 int main(){
@@ -32,14 +33,19 @@ double metodoCorrelacao(int tempoCorrelacao){
 	       somaXvezesY = 0, correlacao,
 	       numeroAbcissa, numeroOrdenada,
 	       numerador, denominador_1,denominador;
-	double leituraCotacoes[100];
 
  	arquivo = fopen("tabela1Hora.csv","rt");
 
-	for(int c=0; c<tempoCorrelacao; c++){
+	for(int c=0; c<100; c++){
 	    fscanf(arquivo, "%lf",&leituraCotacoes[c]);
+	}
+
+	for(int c=0; c<tempoCorrelacao; c++){
 	    numeroAbcissa = leituraCotacoes[c];
 	    numeroOrdenada = leituraCotacoes[c+1];
+	    printf("%lf c \n",leituraCotacoes[c]);
+	    printf("%lf c+1 \n",leituraCotacoes[c+1]);
+
 	    somaAbcissas =   somaAbcissas + numeroAbcissa;
 	    somaAbcissasQuadrado += (numeroAbcissa*numeroAbcissa);
 	    somaOrdenadas = somaOrdenadas + numeroOrdenada;

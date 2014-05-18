@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+double leituraCotacoes[100];
 double metodoCorrelacao(int tempoCorrelacao);
 
 int main(){
@@ -11,13 +12,13 @@ int main(){
 
 	arquivo = fopen("saidaMetodosProlog.txt","wt");
 
-	fprintf(arquivo, "%lf %c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 34;
-	fprintf(arquivo, "%lf %c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 55;
-	fprintf(arquivo, "%lf %c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 89;
-	fprintf(arquivo, "%lf %c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 
 	fclose(arquivo);
 
@@ -32,14 +33,19 @@ double metodoCorrelacao(int tempoCorrelacao){
 	       somaXvezesY = 0, correlacao,
 	       numeroAbcissa, numeroOrdenada,
 	       numerador, denominador_1,denominador;
-	double leituraCotacoes[100];
 
  	arquivo = fopen("tabela1Hora.csv","rt");
 
-	for(int c=0; c<tempoCorrelacao; c++){
+	for(int c=0; c<100; c++){
 	    fscanf(arquivo, "%lf",&leituraCotacoes[c]);
+	}
+
+	for(int c=0; c<tempoCorrelacao; c++){
 	    numeroAbcissa = leituraCotacoes[c];
 	    numeroOrdenada = leituraCotacoes[c+1];
+	    printf("%lf c \n",leituraCotacoes[c]);
+	    printf("%lf c+1 \n",leituraCotacoes[c+1]);
+
 	    somaAbcissas =   somaAbcissas + numeroAbcissa;
 	    somaAbcissasQuadrado += (numeroAbcissa*numeroAbcissa);
 	    somaOrdenadas = somaOrdenadas + numeroOrdenada;
