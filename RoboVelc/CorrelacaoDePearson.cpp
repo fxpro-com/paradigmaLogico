@@ -10,7 +10,7 @@ int main(){
 	       somaXvezesY = 0, correlacao,
 	       numeroAbcissa, numeroOrdenada,
 	       numerador, denominador_1,denominador;
-	double leituraCotacoes[1000];
+	double leituraCotacoes[100];
 	double tempoCorrelacao = 34;
 
  	arquivo = fopen("tabela1Minuto.csv","rt");
@@ -35,7 +35,12 @@ int main(){
 	correlacao = numerador/denominador; 
 
 	printf("%f\n",correlacao);
-	printf("%f %f\n",denominador, denominador_1);
+	fclose(arquivo);
+
+	arquivo = fopen("saidaMetodosProlog.txt","wt");
+
+	fprintf(arquivo, "%lf",correlacao);
+	fclose(arquivo);
 
 	return 0;	
 }
