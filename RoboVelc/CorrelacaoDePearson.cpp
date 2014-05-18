@@ -7,16 +7,17 @@ double metodoCorrelacao(int tempoCorrelacao);
 int main(){
 	FILE *arquivo;
 	double tempoCorrelacao = 21;
+	char pontoProlog = '.';
 
 	arquivo = fopen("saidaMetodosProlog.txt","wt");
 
-	fprintf(arquivo, "%lf\n",metodoCorrelacao(tempoCorrelacao));
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 34;
-	fprintf(arquivo, "%lf\n",metodoCorrelacao(tempoCorrelacao));
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 55;
-	fprintf(arquivo, "%lf\n",metodoCorrelacao(tempoCorrelacao));
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 	tempoCorrelacao = 89;
-	fprintf(arquivo, "%lf\n",metodoCorrelacao(tempoCorrelacao));
+	fprintf(arquivo, "%lf%c\n",metodoCorrelacao(tempoCorrelacao), pontoProlog);
 
 	fclose(arquivo);
 
@@ -33,7 +34,7 @@ double metodoCorrelacao(int tempoCorrelacao){
 	       numerador, denominador_1,denominador;
 	double leituraCotacoes[100];
 
- 	arquivo = fopen("tabela5Minutos.csv","rt");
+ 	arquivo = fopen("tabela1Hora.csv","rt");
 
 	for(int c=0; c<tempoCorrelacao; c++){
 	    fscanf(arquivo, "%lf",&leituraCotacoes[c]);
