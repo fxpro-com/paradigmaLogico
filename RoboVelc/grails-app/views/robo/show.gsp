@@ -41,24 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${roboInstance?.alavancagem}">
-				<li class="fieldcontain">
-					<span id="alavancagem-label" class="property-label"><g:message code="robo.alavancagem.label" default="Alavancagem" /></span>
-					
-						<span class="property-value" aria-labelledby="alavancagem-label"><g:fieldValue bean="${roboInstance}" field="alavancagem"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roboInstance?.quantidadeCandle}">
-				<li class="fieldcontain">
-					<span id="quantidadeCandle-label" class="property-label"><g:message code="robo.quantidadeCandle.label" default="Quantidade Candle" /></span>
-					
-						<span class="property-value" aria-labelledby="quantidadeCandle-label"><g:fieldValue bean="${roboInstance}" field="quantidadeCandle"/></span>
-					
-				</li>
-				</g:if>
-			
 			</ol>
 			<g:form url="[resource:roboInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

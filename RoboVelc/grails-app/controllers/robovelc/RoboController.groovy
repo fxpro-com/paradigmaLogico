@@ -24,26 +24,8 @@ class RoboController {
     }
 
 
-    def selecaoCorrelacao(){
-
-        if(params.tipoGrafico.toString() == "M1")
-            FatorMService.calculoCorrelacao(params.quantidadeCandle.toDouble());
-
-        else if(params.tipoGrafico.toString() == "M5")
-            FatorKService.calculoCorrelacao(params.quantidadeCandle.toDouble());
-
-        else if(params.tipoGrafico.toString() == "H1")
-            FatorHService.calculoCorrelacao(params.quantidadeCandle.toDouble());
-        else 
-            print("Erro. Nenhuma correlacao instanciada! \n");
-
-    }
-
-
     @Transactional
     def save(Robo roboInstance) {
-
-        selecaoCorrelacao()
 
         if (roboInstance == null) {
             notFound()
@@ -107,10 +89,6 @@ class RoboController {
         gravaArquivo.append(roboInstance.getNomeRobo())
         gravaArquivo.append("\n")
         gravaArquivo.append(roboInstance.getTipoGrafico())
-        gravaArquivo.append("\n")
-        gravaArquivo.append(roboInstance.getAlavancagem())
-        gravaArquivo.append("\n")
-        gravaArquivo.append(roboInstance.getQuantidadeCandle())
         gravaArquivo.append("\n")
 
         print roboInstance.getNomeRobo()

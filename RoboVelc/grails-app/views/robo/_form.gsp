@@ -20,21 +20,3 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roboInstance, field: 'alavancagem', 'error')} required">
-	<label for="alavancagem">
-		<g:message code="robo.alavancagem.label" default="Alavancagem" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="alavancagem" value="${fieldValue(bean: roboInstance, field: 'alavancagem')}" required=""/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: roboInstance, field: 'quantidadeCandle', 'error')} required">
-	<label for="quantidadeCandle">
-		<g:message code="robo.quantidadeCandle.label" default="Quantidade Candle" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="quantidadeCandle" value="${fieldValue(bean: roboInstance, field: 'quantidadeCandle')}" required=""/>
-
-</div>
-
