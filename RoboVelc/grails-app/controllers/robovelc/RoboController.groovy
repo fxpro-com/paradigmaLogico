@@ -6,8 +6,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class RoboController {
 
-    def FatorKService, FatorMService, FatorHService
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -22,7 +20,6 @@ class RoboController {
     def create() {
         respond new Robo(params)
     }
-
 
     @Transactional
     def save(Robo roboInstance) {
