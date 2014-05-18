@@ -6,7 +6,15 @@ inserirFatoPearson(Candles,Pearson):-append('tabelaFatos.pl'),
 	write('pearson('), write(Candles),write(','),write(Pearson), write(').'),nl,told.
 inserirFatoPearson(Candles,Pearson).
 
-exclui:-retract(pearson(21,0.8)), 
-	tell('tabelaFatos.pl'),
-	listing(pearson(X,Y)), told.
+exclui:-retract(pearson(21,0.8)), tell('tabelaFatos.pl'),listing(pearson(X,Y)), told.
+
+executa:-if(8 mod 2 =:= 0), write(par), write(ímpar). 
+
+%deleta(X):-
+	%deleta1(X), fail.
+%deleta(X).
+
+%deleta1(X):-
+	%retract(X).
+%deleta1(X).
 
