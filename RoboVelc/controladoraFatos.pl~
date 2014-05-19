@@ -13,8 +13,7 @@ manipulaFatosPearson:- open('calculoPearsonEmC.txt',read,Arquivo),
 	read(Arquivo2,StatusCorrelacao89),
 	close(Arquivo2),
 	insereNovoFato(Correlacao21Candles, Correlacao34Candles, Correlacao55Candles, Correlacao89Candles,
-		       StatusCorrelacao21, StatusCorrelacao34, StatusCorrelacao55, StatusCorrelacao89),
-	excluiFato(StatusCorrelacao21, StatusCorrelacao34, StatusCorrelacao55, StatusCorrelacao89).
+		       StatusCorrelacao21, StatusCorrelacao34, StatusCorrelacao55, StatusCorrelacao89).
 manipulaFatosPearson.
 
 
@@ -34,7 +33,8 @@ insereNovoFato(Correlacao21Candles, Correlacao34Candles, Correlacao55Candles, Co
 
 	StatusCorrelacao89 = 1, tell('tabelaFatos.pl'),Correlacao89Candles > 0.8,
 	assert(pearson(89,Correlacao89Candles)),
-	listing(pearson(X,Y)), told.
+	listing(pearson(X,Y)), told,
+	excluiFato(StatusCorrelacao21, StatusCorrelacao34, StatusCorrelacao55, StatusCorrelacao89).
 
 insereNovoFato(Correlacao21Candles, Correlacao34Candles, Correlacao55Candles, Correlacao89Candles,
 	       StatusCorrelacao21, StatusCorrelacao34, StatusCorrelacao55, StatusCorrelacao89).
