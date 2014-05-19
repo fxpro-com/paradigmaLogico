@@ -1,4 +1,4 @@
-abre:-open('calculoPearsonEmC.txt',read,Arquivo),
+carregaCorrelacoes:-open('calculoPearsonEmC.txt',read,Arquivo),
 	read(Arquivo,Linha1),
 	read(Arquivo,Linha2),
 	read(Arquivo,Linha3),

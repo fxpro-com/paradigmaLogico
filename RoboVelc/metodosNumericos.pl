@@ -1,18 +1,22 @@
 :-dynamic metodos/3.
+:-include('bancoDeDados.pl').
 :-include('tabelaFatos.pl').
 :-include('controladoraFatos.pl').
+:-include('controleOperacao.pl').
 
-%Esssa será a main --------------------
 
 %chamar tabelaBancoDeDados.pl
 %chamar controladoraFatos.pl
 
-%-------------------------------------
-
+main:- 
+	carregaBase,
+	insereNovoFatoPearson,
+       	carregaCorrelacoes.
+	
 
 %tell abre o arquivo para escrita
-escritaPreFato:-tell('correlacao.txt'),
-	write('0.92'),nl,told.
+%escritaPreFato:-tell('correlacao.txt'),
+	%write('0.92'),nl,told.
 
 
 

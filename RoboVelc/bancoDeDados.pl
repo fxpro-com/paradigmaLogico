@@ -15,6 +15,3 @@ carregaBase:-open('calculoPearsonEmC.txt',read,Arquivo),
 	write('pearson(89,'), write(Correlacao89Candles), write(').'),nl,
 	nl,told.
 
-%tell abre o arquivo para escrita
-escritaPreFato:-tell('correlacao.txt'),
-	write('0.92'),nl,told.
