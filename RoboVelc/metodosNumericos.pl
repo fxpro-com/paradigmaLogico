@@ -2,14 +2,17 @@
 :-include('tabelaFatos.pl').
 :-include('controladoraFatos.pl').
 
-%Esssa será a main
+%Esssa será a main --------------------
+
+%chamar tabelaBancoDeDados.pl
+%chamar controladoraFatos.pl
+
+%-------------------------------------
 
 
-
-
-
-
-
+%tell abre o arquivo para escrita
+escritaPreFato:-tell('correlacao.txt'),
+	write('0.92'),nl,told.
 
 
 
