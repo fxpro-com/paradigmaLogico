@@ -88,9 +88,9 @@ class RoboController {
         gravaArquivo.append(roboInstance.getTipoGrafico())
         gravaArquivo.append("\n")
 
-        print roboInstance.getNomeRobo()
-	print "./correlacaoEmC".execute()
-        print "./mainProlog".execute()
+        //print roboInstance.getNomeRobo()
+        println "./correlacaoEmC".execute().text
+        print "./mainProlog".execute().text
 
     }
 

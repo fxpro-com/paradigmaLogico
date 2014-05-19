@@ -11,7 +11,7 @@
 main:- 
 	carregaBase,
 	insereNovoFatoPearson,
-       	carregaCorrelacoes.
+       	carregaCorrelacoes,halt.
 	
 
 %tell abre o arquivo para escrita
