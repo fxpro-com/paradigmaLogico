@@ -89,6 +89,9 @@ class RoboController {
         gravaArquivo.append("\n")
 
         print roboInstance.getNomeRobo()
+	print "./correlacaoEmC".execute()
+        print "./mainProlog".execute()
+
     }
 
     @Transactional
